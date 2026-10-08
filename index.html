@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Manasi Bhosale — WordPress and Shopify Developer</title>
+<meta name="description" content="Manasi Bhosale is a WordPress and Shopify developer from Kolhapur, India, with a year of experience at Walstar Technologies.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#f8fafc;--surface:#fff;--tint:#eef2f7;--line:#dfe5ec;
+  --text:#18222e;--muted:#5a6878;--accent:#3f51d1;--accent-soft:#e8ebfb;--accent-dark:#3243b8;
+  --wp:#1b78ad;--sh:#3f7a28;--fe:#7a4cc4;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-behavior:smooth;scroll-padding-top:calc(76px + env(safe-area-inset-top,0px))}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.65 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0;letter-spacing:-.02em}
+section{padding:80px 0}
+.sec-head{margin-bottom:34px;max-width:620px}
+.sec-head h2{font-size:clamp(28px,4vw,38px);font-weight:800}
+.sec-head p{color:var(--muted);margin:12px 0 0}
+
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:rgba(248,250,252,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700}
+.mono{width:34px;height:34px;border-radius:10px;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px;overflow:hidden;flex-shrink:0}
+.mono{position:relative}
+.mono img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.links{display:flex;gap:24px;font-size:16px;color:var(--muted)}
+.links a:hover{color:var(--text)}
+.nav-end{display:flex;align-items:center;gap:10px}
+.menu-btn{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:12px;background:var(--surface);cursor:pointer;padding:0;place-items:center}
+.menu-btn span,.menu-btn span::before,.menu-btn span::after{display:block;width:18px;height:2px;background:var(--text);border-radius:2px;position:relative;content:""}
+.menu-btn span::before{position:absolute;top:-6px}.menu-btn span::after{position:absolute;top:6px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:999px;font-weight:600;font-size:15px;border:1px solid var(--line);background:var(--surface);color:var(--text);cursor:pointer;font-family:var(--body)}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn.primary:hover{background:var(--accent-dark)}
+
+/* hero */
+.hero{padding:72px 0 64px;display:grid;grid-template-columns:1.3fr .7fr;gap:56px;align-items:center}
+.role{color:var(--accent);font-weight:600;margin:0 0 16px}
+.hero h1{font-size:clamp(38px,6vw,64px);font-weight:800}
+.hero .lead{color:var(--muted);font-size:18px;max-width:560px;margin:22px 0 30px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.card-id{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:24px}
+.avatar{aspect-ratio:1/1;border-radius:16px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font:800 clamp(64px,9vw,96px) var(--display);letter-spacing:-.04em;overflow:hidden;margin-bottom:18px}
+.avatar{position:relative}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.card-id h3{font-size:22px}
+.card-id p{margin:4px 0 16px;color:var(--muted);font-size:16px}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:16px;font-weight:600;padding:7px 14px;border-radius:999px;background:#e6f2df;color:var(--sh)}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--sh)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat{padding:24px 24px 24px 0}
+.stat+.stat{padding-left:24px;border-left:1px solid var(--line)}
+.stat b{display:block;font:800 34px var(--display);letter-spacing:-.02em}
+.stat span{color:var(--muted);font-size:16px}
+
+/* about */
+.about{display:grid;grid-template-columns:1.2fr .8fr;gap:56px}
+.about p{margin:0 0 14px;max-width:62ch}
+.about aside{border-left:2px solid var(--accent);padding-left:22px;color:var(--muted);align-self:start}
+.about aside b{display:block;color:var(--text);font-family:var(--display);font-size:18px;margin-bottom:4px}
+.about aside p{margin:0 0 16px}
+
+/* platforms */
+.plat{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pl{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--c);border-radius:14px;padding:24px}
+.pl h3{font-size:20px;margin-bottom:8px}
+.pl p{margin:0;color:var(--muted);font-size:16px}
+.wp{--c:var(--wp)}.sh{--c:var(--sh)}.fe{--c:var(--fe)}
+
+/* filters */
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px}
+.chip-btn{padding:9px 20px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);font:500 16px var(--body);cursor:pointer}
+.chip-btn:hover{border-color:var(--accent);color:var(--text)}
+.chip-btn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+
+/* projects */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.proj{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--c);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:10px}
+.proj[hidden],.work[hidden]{display:none}
+.proj:hover{border-color:var(--c)}
+.tag-p{font-size:15px;font-weight:600;color:var(--c)}
+.proj h3{font-size:19px}
+.proj small{color:var(--muted);font-size:15px;margin-top:-6px}
+.proj p{margin:0;color:var(--muted);font-size:16px;flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span,.skill-row div span{font-size:15px;line-height:1.4;padding:6px 14px;border-radius:999px;background:var(--tint);color:#3b4756}
+.visit{font-weight:600;font-size:16px;color:var(--c)}
+.proj:hover .visit{text-decoration:underline}
+
+/* services: open rows instead of cards */
+.works{display:grid;grid-template-columns:repeat(2,1fr);gap:0 48px}
+.work{border-top:1px solid var(--line);padding:22px 0 26px;display:flex;flex-direction:column;gap:8px}
+.work h3{font-size:19px}
+.work p{margin:0;color:var(--muted);font-size:16px;max-width:52ch}
+
+/* skills */
+.skill-row{display:grid;grid-template-columns:200px 1fr;gap:12px 24px;padding:18px 0;border-top:1px solid var(--line);align-items:start}
+.skill-row:last-child{border-bottom:1px solid var(--line)}
+.skill-row h3{font-size:19px;color:var(--c,var(--text));padding-top:3px}
+.skill-row div{display:flex;flex-wrap:wrap;gap:8px}
+
+/* experience, project, education */
+.role-card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:32px;display:grid;grid-template-columns:200px 1fr;gap:36px}
+.when{color:var(--accent);font-weight:600}
+.role-card h3{font-size:24px}
+.role-card .co{color:var(--muted);margin:6px 0 18px}
+.role-card ul{margin:0;padding-left:20px;display:grid;gap:10px;color:#33404f;font-size:17px}
+.role-card li::marker{color:var(--accent)}
+.two{display:grid;grid-template-columns:repeat(2,1fr);gap:48px}
+.two h3{font-size:22px;margin-bottom:6px}
+.item{border-top:1px solid var(--line);padding:16px 0}
+.item b{font-family:var(--display);font-size:18px;display:block}
+.item span{color:var(--muted);font-size:16px}
+.acad .role-card ul{margin-top:14px}
+
+/* contact */
+.contact{background:var(--accent);color:#fff;border-radius:26px;padding:56px;text-align:center}
+.contact h2{font-size:clamp(30px,5vw,46px);font-weight:800}
+.contact>p{color:#e3e7fb;max-width:520px;margin:16px auto 28px}
+.contact .btn{background:#fff;color:var(--accent-dark);border-color:#fff}
+.contact .btn:hover{background:var(--accent-soft)}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px;text-align:left}
+.info div{border-top:1px solid rgba(255,255,255,.35);padding-top:14px;font-size:17px;overflow-wrap:anywhere}
+.info small{display:block;color:#cfd6f7;font-size:15px;margin-bottom:2px}
+.info a:hover{text-decoration:underline}
+footer{padding:32px 0 48px;color:var(--muted);font-size:16px;text-align:center}
+
+@media(max-width:900px){
+  .hero,.about{grid-template-columns:1fr;gap:36px}
+  .hero{padding-top:44px}
+  .card-id{max-width:360px}
+  .plat,.grid{grid-template-columns:repeat(2,1fr)}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(3){padding-left:0;border-left:0}
+  .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .stat:nth-child(2n){padding-left:24px;border-left:1px solid var(--line)}
+  .role-card{grid-template-columns:1fr;gap:12px}
+  .two{grid-template-columns:1fr;gap:40px}
+  .menu-btn{display:grid}
+  .links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 24px 16px}
+  .links a{padding:12px 0;border-bottom:1px solid var(--line);color:var(--text)}
+  nav.open .links{display:flex}
+}
+@media(max-width:600px){
+  section{padding:60px 0}
+  .plat,.grid,.works,.info{grid-template-columns:1fr}
+  .skill-row{grid-template-columns:1fr;gap:10px}
+  .contact{padding:36px 22px}
+  .role-card{padding:24px}
+  .nav-end .btn{display:none}
+  .stat b{font-size:28px}
+  .stat,.stat:nth-child(2n){padding-left:16px}
+  .stat:nth-child(odd){padding-left:0}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav id="nav"><div class="wrap nav">
+  <a class="brand" href="#top"><span class="mono">MB<img src="profile-image.jpg" alt="Manasi Bhosale logo" onerror="this.remove()"></span>Manasi Bhosale</a>
+  <div class="links" id="links">
+    <a href="#about">About</a><a href="#projects">Projects</a><a href="#work">Services</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#contact">Contact</a>
+  </div>
+  <div class="nav-end">
+    <a class="btn primary" href="mailto:bhosalemanasi806@gmail.com">Email me</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="links"><span></span></button>
+  </div>
+</div></nav>
+
+<main id="top" class="wrap">
+  <div class="hero">
+    <div>
+      <p class="role">Web developer in Kolhapur, India</p>
+      <h1>I build WordPress sites and Shopify stores.</h1>
+      <p class="lead">I've spent the past year at Walstar Technologies working on client websites and online stores. Most of my work is turning Figma designs into responsive pages and customizing themes and plugins to fit what the client needs.</p>
+      <div class="cta"><a class="btn primary" href="#projects">See my projects</a><a class="btn" href="mailto:bhosalemanasi806@gmail.com">Get in touch</a></div>
+    </div>
+    <aside class="card-id">
+      <div class="avatar">MB<img src="profile-image.jpg" alt="Manasi Bhosale" onerror="this.remove()"></div>
+      <h3>Manasi Bhosale</h3>
+      <p>WordPress and Shopify developer</p>
+      <span class="status">Open to new opportunities</span>
+    </aside>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b>1 year</b><span>At Walstar Technologies</span></div>
+    <div class="stat"><b>2</b><span>Main platforms: WordPress and Shopify</span></div>
+    <div class="stat"><b>9</b><span>Live sites featured below</span></div>
+    <div class="stat"><b>2</b><span>Certifications</span></div>
+  </div>
+
+  <section id="about">
+    <div class="sec-head"><h2>About me</h2></div>
+    <div class="about">
+      <div>
+        <p>I studied computer applications (BCA, then MCA) and did Java training before moving into web development. At Walstar Technologies I work mainly in WordPress and Shopify, building pages, customizing themes, fixing bugs and keeping live sites up to date.</p>
+        <p>I'm early in my career and I learn fastest on real projects, so I'm looking for a team where I can keep building, take feedback and get better at the work.</p>
+      </div>
+      <aside>
+        <b>Languages</b><p>English, Hindi, Marathi, Konkani</p>
+        <b>Outside work</b><p>Traveling and playing badminton</p>
+      </aside>
+    </div>
+  </section>
+
+  <section id="platforms">
+    <div class="sec-head"><h2>What I work with</h2><p>WordPress and Shopify are my main platforms, with HTML and CSS underneath both.</p></div>
+    <div class="plat">
+      <div class="pl wp"><h3>WordPress</h3><p>Sites built in Elementor, WPBakery, DIVI and Gutenberg, with ACF where the content needs to be flexible.</p></div>
+      <div class="pl sh"><h3>Shopify</h3><p>Themes written in Liquid, with custom sections and schema settings so store owners can edit them.</p></div>
+      <div class="pl fe"><h3>Frontend</h3><p>HTML and CSS for responsive, cross-browser layouts, usually starting from a Figma design.</p></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="sec-head"><h2>Live projects</h2><p>Sites I've worked on. Each card opens the live site, and you can filter by platform.</p></div>
+    <div class="filters" data-t=".proj" role="group" aria-label="Filter projects by platform">
+      <button class="chip-btn" data-f="all" aria-pressed="true">All projects</button>
+      <button class="chip-btn" data-f="sh" aria-pressed="false">Shopify</button>
+      <button class="chip-btn" data-f="wp" aria-pressed="false">WordPress</button>
+    </div>
+    <div class="grid">
+      <a class="proj sh" data-p="sh" href="https://chantybikes.de/" target="_blank" rel="noopener"><span class="tag-p">Shopify</span><h3>Chanty Bikes</h3><small>chantybikes.de</small><p>Store for a European children's bike and cargo-trike brand, with navigation by age and height and pre-order flows.</p><div class="tags"><span>Liquid</span><span>Shopify 2.0</span></div><span class="visit">Visit site</span></a>
+      <a class="proj sh" data-p="sh" href="https://mymobo.com/" target="_blank" rel="noopener"><span class="tag-p">Shopify</span><h3>MOBO</h3><small>mymobo.com</small><p>Store for a 7-in-1 myofascial release tool, with video hero sections and an FAQ-led buying flow.</p><div class="tags"><span>Shopify 2.0</span><span>App integrations</span></div><span class="visit">Visit site</span></a>
+      <a class="proj sh" data-p="sh" href="https://koanna.com/" target="_blank" rel="noopener"><span class="tag-p">Shopify</span><h3>Koanna</h3><small>koanna.com</small><p>Multi-market store (DE, UK, US) for infrared sauna blankets and red-light therapy, with locale-aware navigation.</p><div class="tags"><span>Multi-market</span><span>Reviews app</span></div><span class="visit">Visit site</span></a>
+      <a class="proj sh" data-p="sh" href="https://cateandchloe.com/" target="_blank" rel="noopener"><span class="tag-p">Shopify</span><h3>Cate &amp; Chloe</h3><small>cateandchloe.com</small><p>Large jewelry and gift-bundle catalogue, with theme customization, bug fixes and speed work.</p><div class="tags"><span>Performance</span><span>Bug fixes</span></div><span class="visit">Visit site</span></a>
+      <a class="proj sh" data-p="sh" href="https://joybra.com/" target="_blank" rel="noopener"><span class="tag-p">Shopify</span><h3>Joy Bra</h3><small>joybra.com</small><p>Comfort-first intimates brand, with a bundle-builder app integration and seasonal campaign sections.</p><div class="tags"><span>App integration</span><span>Metafields</span></div><span class="visit">Visit site</span></a>
+      <a class="proj sh" data-p="sh" href="https://comfortbra.com/" target="_blank" rel="noopener"><span class="tag-p">Shopify</span><h3>Comfort Bra</h3><small>comfortbra.com</small><p>Intimates label, with regular maintenance, UI fixes, product page updates and seasonal builds.</p><div class="tags"><span>UI fixes</span><span>Product pages</span></div><span class="visit">Visit site</span></a>
+      <a class="proj sh" data-p="sh" href="https://talon.gg/" target="_blank" rel="noopener"><span class="tag-p">Shopify and PageFly</span><h3>Talon</h3><small>talon.gg</small><p>Merch store for an Asia-Pacific esports and gaming organization, with custom landing and product pages.</p><div class="tags"><span>PageFly</span><span>Landing pages</span></div><span class="visit">Visit site</span></a>
+      <a class="proj wp" data-p="wp" href="https://www.medusahcs.com/" target="_blank" rel="noopener"><span class="tag-p">WordPress and Elementor</span><h3>MedUSA Healthcare Services</h3><small>medusahcs.com</small><p>Multi-page site for a US medical billing and revenue-cycle management company, with service pages and a client portal section.</p><div class="tags"><span>Elementor</span><span>Multi-page</span></div><span class="visit">Visit site</span></a>
+      <a class="proj wp" data-p="wp" href="https://project8.walstargroup.org/" target="_blank" rel="noopener"><span class="tag-p">WordPress and Elementor</span><h3>Renowned Finishing</h3><small>project8.walstargroup.org</small><p>Redesign for an Alberta furniture and cabinet-refinishing company, with a before/after gallery and a free-estimate booking flow.</p><div class="tags"><span>Elementor</span><span>Before/after gallery</span></div><span class="visit">Visit site</span></a>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="sec-head"><h2>What I do</h2><p>The kind of work I handle on each platform.</p></div>
+    <div class="filters" data-t=".work" role="group" aria-label="Filter services by platform">
+      <button class="chip-btn" data-f="all" aria-pressed="true">All work</button>
+      <button class="chip-btn" data-f="wp" aria-pressed="false">WordPress</button>
+      <button class="chip-btn" data-f="sh" aria-pressed="false">Shopify</button>
+    </div>
+    <div class="works">
+      <article class="work wp" data-p="wp"><span class="tag-p">WordPress</span><h3>Page-builder websites</h3><p>Sites built with Elementor, WPBakery, DIVI and Gutenberg, with ACF fields so clients can edit their own content.</p><div class="tags"><span>Elementor</span><span>DIVI</span><span>ACF</span></div></article>
+      <article class="work wp" data-p="wp"><span class="tag-p">WordPress</span><h3>Figma to WordPress</h3><p>Designs turned into responsive, cross-browser pages and checked on phones and tablets.</p><div class="tags"><span>Figma</span><span>Responsive</span></div></article>
+      <article class="work wp" data-p="wp"><span class="tag-p">WordPress</span><h3>Theme and plugin customization</h3><p>Changing existing themes and plugins to match a client's branding, and connecting custom forms, APIs and third-party tools.</p><div class="tags"><span>Basic PHP</span><span>REST APIs</span><span>Forms</span></div></article>
+      <article class="work wp" data-p="wp"><span class="tag-p">WordPress</span><h3>Speed, SEO and upkeep</h3><p>Page speed and SEO improvements, Core Web Vitals checks, bug fixes and regular content updates.</p><div class="tags"><span>Page speed</span><span>SEO</span><span>Core Web Vitals</span></div></article>
+      <article class="work sh" data-p="sh"><span class="tag-p">Shopify</span><h3>Custom Liquid themes</h3><p>Theme work in Liquid, HTML and CSS, including reusable custom sections.</p><div class="tags"><span>Liquid</span><span>HTML</span><span>CSS</span></div></article>
+      <article class="work sh" data-p="sh"><span class="tag-p">Shopify</span><h3>Schema-driven sections</h3><p>Schema settings so store owners can edit product, collection and cart-related sections themselves.</p><div class="tags"><span>Schema editing</span><span>Custom sections</span></div></article>
+      <article class="work sh" data-p="sh"><span class="tag-p">Shopify</span><h3>Figma to Shopify</h3><p>Designs converted into responsive storefronts that work across browsers.</p><div class="tags"><span>Figma</span><span>Responsive</span></div></article>
+      <article class="work sh" data-p="sh"><span class="tag-p">Shopify</span><h3>Speed and integrations</h3><p>Page speed and SEO fixes, third-party app integrations and ongoing store bug fixes.</p><div class="tags"><span>Speed</span><span>App integrations</span></div></article>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head"><h2>Skills</h2></div>
+    <div>
+      <div class="skill-row" style="--c:var(--wp)"><h3>WordPress</h3><div><span>Elementor</span><span>WPBakery</span><span>DIVI Builder</span><span>Gutenberg</span><span>ACF</span><span>Basic PHP</span><span>Theme and plugin customization</span></div></div>
+      <div class="skill-row" style="--c:var(--sh)"><h3>Shopify</h3><div><span>Liquid</span><span>Theme customization</span><span>Custom sections</span><span>Schema editing</span><span>Figma to Shopify</span><span>SEO and speed optimization</span></div></div>
+      <div class="skill-row" style="--c:var(--fe)"><h3>Frontend</h3><div><span>HTML</span><span>CSS</span><span>Responsive design</span><span>Cross-browser compatibility</span></div></div>
+      <div class="skill-row"><h3>Programming and databases</h3><div><span>Java</span><span>C</span><span>MySQL</span><span>Firebase</span></div></div>
+      <div class="skill-row"><h3>Mobile and testing</h3><div><span>Android app development</span><span>Software testing (certified)</span></div></div>
+      <div class="skill-row"><h3>Tools</h3><div><span>Figma</span></div></div>
+      <div class="skill-row"><h3>How I work</h3><div><span>Fast learner</span><span>Problem solving</span><span>Team collaboration</span><span>Communication</span><span>Attention to detail</span><span>Time management</span></div></div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head"><h2>Experience</h2></div>
+    <div class="role-card">
+      <div class="when">2025 to 2026</div>
+      <div>
+        <h3>WordPress and Shopify Developer</h3>
+        <p class="co">Walstar Technologies</p>
+        <ul>
+          <li>Built and customized WordPress sites using Elementor, WPBakery, DIVI, Gutenberg and ACF.</li>
+          <li>Worked on Shopify themes in Liquid, adding custom sections with schema settings.</li>
+          <li>Converted Figma designs into responsive, cross-browser WordPress and Shopify pages.</li>
+          <li>Customized themes and plugins, and connected forms, APIs and third-party apps.</li>
+          <li>Handled page speed, SEO fixes, bug fixes and content updates on live client sites.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="academic" class="acad">
+    <div class="sec-head"><h2>Academic project</h2></div>
+    <div class="role-card">
+      <div class="when">Android, Java, Firebase</div>
+      <div>
+        <h3>Spread Smile, a donation app</h3>
+        <p class="co">Built to reduce food and clothing waste</p>
+        <ul>
+          <li>An Android app that connects donors with people who need food and clothing.</li>
+          <li>A simple interface that lets donors list food and clothing donations easily.</li>
+          <li>Organizations can post what they need, so donations reach the right place.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="two">
+      <div>
+        <h3>Education</h3>
+        <div class="item"><b>Master of Computer Applications (MCA)</b><span>Shree Devi College, Mangalore</span></div>
+        <div class="item"><b>Bachelor of Computer Applications (BCA)</b><span>GVM's GGPR College of Commerce &amp; Economics, Goa</span></div>
+        <div class="item"><b>Higher Secondary School (HSC)</b><span>PES College of Arts &amp; Science, Goa</span></div>
+      </div>
+      <div>
+        <h3>Certifications</h3>
+        <div class="item"><b>Java Training Certification</b><span>Besalt Technologies, October 20, 2024</span></div>
+        <div class="item"><b>Software Testing Certification</b><span>Besalt Technologies, September 1, 2024</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact">
+      <h2>Let's work together.</h2>
+      <p>If you have a WordPress site or a Shopify store that needs building or fixing, send me a message.</p>
+      <a class="btn" href="mailto:bhosalemanasi806@gmail.com">bhosalemanasi806@gmail.com</a>
+      <div class="info">
+        <div><small>Phone</small><a href="tel:+919021549890">+91 90215 49890</a></div>
+        <div><small>Location</small>Kolhapur, Maharashtra, India</div>
+        <div><small>Languages</small>English, Hindi, Marathi, Konkani</div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>Manasi Bhosale, WordPress and Shopify developer, Kolhapur.</footer>
+
+<script>
+// Platform filters
+document.querySelectorAll('.chip-btn').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var f = b.dataset.f;
+    b.parentNode.querySelectorAll('.chip-btn').forEach(function (x) {
+      x.setAttribute('aria-pressed', x === b ? 'true' : 'false');
+    });
+    document.querySelectorAll(b.parentNode.dataset.t).forEach(function (c) {
+      c.hidden = !(f === 'all' || c.dataset.p === f);
+    });
+  });
+});
+
+// Mobile menu
+var nav = document.getElementById('nav'), menuBtn = document.getElementById('menuBtn');
+function setMenu(open) {
+  nav.classList.toggle('open', open);
+  menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+}
+menuBtn.addEventListener('click', function () { setMenu(!nav.classList.contains('open')); });
+document.querySelectorAll('#links a').forEach(function (a) {
+  a.addEventListener('click', function () { setMenu(false); });
+});
+</script>
+</body>
+</html>
